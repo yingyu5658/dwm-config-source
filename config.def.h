@@ -18,6 +18,16 @@ static const char *colors[][3]      = {
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
 
+
+static const char *const autostart[] = {
+    "/usr/bin/touch", "/home/verdant/dwmtest", NULL,
+    "/usr/bin/fcitx5", "-d", NULL,
+    "/usr/bin/setxkbmap", "-option", "caps:escape", NULL,
+    "/usr/bin/xmodmap", "-e", "clear Lock", "-e", "keycode 0x42 = Escape", NULL,
+    "/usr/bin/feh", "--bg-fill", "/home/verdant/Pictures/wallpapers/kita.png", NULL,
+    NULL
+};
+
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
@@ -46,7 +56,7 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod1Mask
+#define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \

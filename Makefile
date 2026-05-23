@@ -21,6 +21,15 @@ dwm: ${OBJ}
 
 clean:
 	rm -f dwm ${OBJ} dwm-${VERSION}.tar.gz
+	./rm_config_h.sh
+
+.PHONY: test 
+
+test:
+	$(MAKE) clean
+	-pkill dwm
+	$(MAKE)
+	$(MAKE) install -j4
 
 dist: clean
 	mkdir -p dwm-${VERSION}
